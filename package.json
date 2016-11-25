@@ -1,0 +1,27 @@
+{
+  "name": "search-text-for-images",
+  "version": "1.0.0",
+  "description": "Allows for an images to be found using a text search",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MiloATH/SearchTextForImages.git"
+  },
+  "keywords": [
+    "image",
+    "text",
+    "abstraction"
+  ],
+  "author": "Milo Hartsoe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MiloATH/SearchTextForImages/issues"
+  },
+  "homepage": "https://github.com/MiloATH/SearchTextForImages#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
