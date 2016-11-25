@@ -23,6 +23,7 @@
   "homepage": "https://github.com/MiloATH/SearchTextForImages#readme",
   "dependencies": {
     "express": "^4.14.0",
+    "node-bing-api": "^3.0.1",
     "node-google-image-search": "^1.0.2"
   }
 }

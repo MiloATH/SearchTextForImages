@@ -19,6 +19,11 @@ app.get('/', function(req, res) {
 app.get('/api/imagesearch/:text',function(req,res){
     var offset = req.query.offset || 0;
     search(decodeURI(req.params.text),function(images){
-        
+        console.log(images);
+        res.json(images);
     },offset,10);
 })
+
+app.listen(PORT, function() {
+    console.log('Image Search listening on port '+PORT);
+});
