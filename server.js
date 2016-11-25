@@ -3,6 +3,7 @@ var search = require('node-google-image-search');
 var express = require('express');
 var app = express();
 var PORT = process.env.PORT || 3000;
+var history = [];
 
 //home
 app.get('/', function(req, res) {
@@ -18,7 +19,9 @@ app.get('/', function(req, res) {
 //Search
 app.get('/api/imagesearch/:text',function(req,res){
     var offset = req.query.offset || 0;
-    search(decodeURI(req.params.text),function(images){
+    var searchText = decodeURI(req.params.text);
+    history.push({"term":searchText,"when":new Date()});
+    search(searchText,function(images){
         console.log(images);
         res.json(images);
     },offset,10);
