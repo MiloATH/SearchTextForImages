@@ -16,14 +16,31 @@ app.get('/', function(req, res) {
     });
 });
 
+//History
+app.get('/api/history',function(req,res){
+    res.send(JSON.stringify(history));
+})
+
 //Search
 app.get('/api/imagesearch/:text',function(req,res){
     var offset = req.query.offset || 0;
     var searchText = decodeURI(req.params.text);
-    history.push({"term":searchText,"when":new Date()});
+    history.unshift({"term":searchText,"when":new Date()});
+    if(history.length>10){
+        history.pop();
+    }
     search(searchText,function(images){
-        console.log(images);
-        res.json(images);
+        //console.log(images);
+        var ret = [];
+        for(var i=0;i<images.length;i++){
+            ret.push({
+                "url": images[i].link,
+                "snippet": images[i].snippet,
+                "thumbnail": images[i].image.thumbnailLink,
+                "context": images[i].image.contextLink
+            })
+        }
+        res.end(JSON.stringify(ret));
     },offset,10);
 })
 
