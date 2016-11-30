@@ -12,7 +12,25 @@
         <h5>
             By Milo Hartsoe. <a href="https://github.com/MiloATH/SearchTextForImages">Code on Github here</a>.
         </h5>
-        
+        <h3>Usage:</h3>
+        <ul type="1">
+            <li>Request images based of some text. Ex: For cat images use:
+                <a id="link"></a>
+            </li>
+            <li>See history using
+                <a id="link2"></a>
+            </li>
+        </ul>
+        <script type="text/javascript">
+            window.onload = function() {
+                var url = window.location.toString();
+                document.getElementById("link").innerHTML = url + 'api/imagesearch/cats';
+                document.getElementById("link").href = url + 'api/imagesearch/cats';
+                document.getElementById("link2").innerHTML = url + 'api/history';
+                document.getElementById("link2").href = url + 'api/history';
+
+            }
+        </script>
     </div>
 </body>
 
