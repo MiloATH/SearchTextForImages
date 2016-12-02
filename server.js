@@ -1,5 +1,5 @@
 var path = require('path');
-var search = require('node-google-image-search');
+var search = require('node-google-image-search'); //Needs .env with CSE_ID and CSE_API_KEY
 var express = require('express');
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -17,22 +17,25 @@ app.get('/', function(req, res) {
 });
 
 //History
-app.get('/api/history',function(req,res){
-    res.send(JSON.stringify(history));
-})
+app.get('/api/history', function(req, res) {
+    res.end(JSON.stringify(history));
+});
 
 //Search
-app.get('/api/imagesearch/:text',function(req,res){
+app.get('/api/imagesearch/:text', function(req, res) {
     var offset = req.query.offset || 0;
     var searchText = decodeURI(req.params.text);
-    history.unshift({"term":searchText,"when":new Date()});
-    if(history.length>10){
+    history.unshift({
+        "term": searchText,
+        "when": new Date()
+    });
+    if (history.length > 10) {
         history.pop();
     }
-    search(searchText,function(images){
+    search(searchText, function(images) {
         //console.log(images);
         var ret = [];
-        for(var i=0;i<images.length;i++){
+        for (var i = 0; i < images.length; i++) {
             ret.push({
                 "url": images[i].link,
                 "snippet": images[i].snippet,
@@ -41,9 +44,9 @@ app.get('/api/imagesearch/:text',function(req,res){
             })
         }
         res.end(JSON.stringify(ret));
-    },offset,10);
+    }, offset, 10);
 })
 
 app.listen(PORT, function() {
-    console.log('Image Search listening on port '+PORT);
+    console.log('Image Search listening on port ' + PORT);
 });

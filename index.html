@@ -15,10 +15,13 @@
         <h3>Usage:</h3>
         <ul type="1">
             <li>Request images based of some text. Ex: For cat images use:
-                <a id="link"></a>
+                <code><a id="link"></a></code>
+            </li>
+            <li>Request images with an offset. This allows for images to given in groups of 10, and the starting index is the offset. Ex:
+                <code><a id="linkOffset"></a></code>
             </li>
             <li>See history using
-                <a id="link2"></a>
+                <code><a id="linkHistory"></a></code>
             </li>
         </ul>
         <script type="text/javascript">
@@ -26,9 +29,10 @@
                 var url = window.location.toString();
                 document.getElementById("link").innerHTML = url + 'api/imagesearch/cats';
                 document.getElementById("link").href = url + 'api/imagesearch/cats';
-                document.getElementById("link2").innerHTML = url + 'api/history';
-                document.getElementById("link2").href = url + 'api/history';
-
+                document.getElementById("linkOffset").innerHTML = url + 'api/imagesearch/cats?offset=10';
+                document.getElementById("linkOffset").href = url + 'api/imagesearch/cats?offset=10';
+                document.getElementById("linkHistory").innerHTML = url + 'api/history';
+                document.getElementById("linkHistory").href = url + 'api/history';
             }
         </script>
     </div>
